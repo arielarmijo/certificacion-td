@@ -7,7 +7,7 @@ El caso de estudio consiste en realizar un proyecto para la empresa World Parts 
 La prueba consiste en desarrollar los siguientes requerimientos:
 1. Realizar consultas a [base de datos relacional](er-diagram.png).
 2. Construir algoritmo de validación del margen de venta.
-3. Construir pruebas unitarias para verificar el algoritmo de validación del margen de venta.
+3. Construir pruebas unitarias para verificar el algoritmo del punto anterior.
 4. Crear página web que muestre el listado de productos.
 5. Crear API REST que ofrezca la información mostrada en la página web del punto anterior.
 
