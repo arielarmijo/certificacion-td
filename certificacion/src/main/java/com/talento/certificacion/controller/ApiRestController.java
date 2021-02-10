@@ -3,6 +3,10 @@ package com.talento.certificacion.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,10 +36,13 @@ public class ApiRestController {
 	}
 	
 	@GetMapping("/inventario")
-	List<Inventory> mostrarInventario(@RequestParam(defaultValue = "0") long almacenId,
-									  @RequestParam(defaultValue = "0") long categoriaProductoId,
+	List<Inventory> mostrarInventario(@RequestParam(defaultValue = "0") long warehouseId,
+									  @RequestParam(defaultValue = "0") long productCategoryId,
+									  @RequestParam(defaultValue = "0") int page,
 									  @RequestParam(defaultValue = "product.name") String sortBy) {
-		return wpService.filtrarProductosInventario(categoriaProductoId, almacenId, sortBy);
+		Pageable pageRequest = PageRequest.of(page, 10, Sort.by(sortBy));
+		Page<Inventory> inventoryPages = wpService.filtrarProductosInventario(productCategoryId, warehouseId, pageRequest);
+		return inventoryPages.getContent();
 	}
 
 }

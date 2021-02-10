@@ -5,6 +5,10 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,21 +36,32 @@ public class WebController {
 	}
 
 	@GetMapping("/")
-	public String mostrarMonitorProductos(@RequestParam(defaultValue = "0") long almacenId,
-										  @RequestParam(defaultValue = "0") long categoriaProductoId,
-										  @RequestParam(defaultValue = "product.name") String sortBy,
+	public String mostrarMonitorProductos(@RequestParam(defaultValue = "0")  long warehouseId,
+										  @RequestParam(defaultValue = "0") long productCategoryId,
+										  @RequestParam(defaultValue = "0") int page,
+										  @RequestParam(defaultValue = "product.id") String sortBy,
 										  Model model) {
 		List<Warehouse> warehouses = wpServicio.buscarAlmacenes();
 		List<ProductCategory> productCategories = wpServicio.buscarCategoriasProducto();
-		List<Inventory> inventories = wpServicio.filtrarProductosInventario(categoriaProductoId, almacenId, sortBy);
+		Pageable pageRequest = PageRequest.of(page, 10, Sort.by(sortBy));
+		Page<Inventory> inventoryPages = wpServicio.filtrarProductosInventario(productCategoryId, warehouseId, pageRequest);
+		List<Inventory> inventories =  inventoryPages.getContent();
+		int delta = 5;
+		int totalPages = inventoryPages.getTotalPages();
+		int startPage = delta * ((int) page / delta);
+		int endPage =  page <= totalPages - delta ? startPage + delta - 1 : totalPages - 1;
+		model.addAttribute("warehouseId", warehouseId);
+		model.addAttribute("productCategoryId", productCategoryId);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("warehouses", warehouses);
-		model.addAttribute("warehouseId", almacenId);
 		model.addAttribute("productCategories", productCategories);
-		model.addAttribute("productCategoryId", categoriaProductoId);
-		model.addAttribute("inventario", inventories);
-		logger.info("Almacen: {}, categoria: {}, productos: {}", almacenId == 0 ? "Todos" : wpServicio.buscarAlmacenPorId(almacenId).getName(),
-																categoriaProductoId == 0 ? "Todos" : wpServicio.buscarCategoriaProductoPorId(categoriaProductoId).getName(),
-																inventories.size());
+		model.addAttribute("inventories", inventories);
+		logger.info("Almacen: {}, categoria: {}, productos: {}, pagina: {}/{}", warehouseId == 0 ? "Todos" : wpServicio.buscarAlmacenPorId(warehouseId).getName(),
+																productCategoryId == 0 ? "Todos" : wpServicio.buscarCategoriaProductoPorId(productCategoryId).getName(),
+																inventoryPages.getTotalElements(), page, totalPages);
 		return "listado-productos";
 	}
 	

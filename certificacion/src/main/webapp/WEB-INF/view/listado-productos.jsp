@@ -23,7 +23,7 @@
 		<form class="row my-3" method="get">
 			<div class="form-group col-md-4">
 				<label class="" for="almacen">Almacen</label>
-				<select id="almacen" class="form-control" name="almacenId">
+				<select id="almacen" class="form-control" name="warehouseId">
 					<option value="0" selected>Todos</option>
 					<c:forEach items="${warehouses}" var="wh">
 						<option value="${wh.id}" ${warehouseId == wh.id ? 'selected' : ''}>${wh.name}</option>
@@ -32,7 +32,7 @@
 			</div>
 			<div class="form-group col-md-4">
 				<label class="" for="categoria">Categoria Producto</label>
-				<select id="categoria" class="form-control" name="categoriaProductoId">
+				<select id="categoria" class="form-control" name="productCategoryId">
 					<option value="0" selected>Todas</option>
 					<c:forEach items="${productCategories}" var="pc">
 						<option value="${pc.id}" ${productCategoryId == pc.id ? 'selected' : ''}>${pc.name}</option>
@@ -44,11 +44,12 @@
 			</div>
 		</form>
 		
-		<c:if test="${empty inventario}">
+		<c:if test="${empty inventories}">
 			<p class="alert alert-danger">No se encontraron productos</p>
 		</c:if>
 		
-		<c:if test="${not empty inventario}">
+		<c:if test="${not empty inventories}">
+			<%@ include file="/WEB-INF/snippets/pagination.jsp" %>
 			<table class="table table-responsive animated fadeIn">
 				<thead>
 					<tr>
@@ -62,7 +63,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="item" items="${inventario}">
+					<c:forEach var="item" items="${inventories}">
 						<tr>
 							<td>${item.warehouse.name}</td>
 							<td>${item.product.id}</td>
@@ -81,6 +82,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<%@ include file="/WEB-INF/snippets/pagination.jsp" %>
 		</c:if>
 	</main>
 	
