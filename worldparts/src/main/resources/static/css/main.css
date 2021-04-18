@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+/*
+html, body{ 
+  min-height: 100vh;
+  overflow: auto;
+}
+
+body {
+	position: relative;
+  	min-height: 100vh;
+}
+
+*/
+
+
+/* NAVBAR */
+
+
+/* MAIN */
+form {
+	justify-content: flex-end;
+}
+.form-group {
+	margin: 5px 5px;
+}
+
+form .form-group:last-child {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+form button {
+	height: 50px;
+}
+
+i {
+	margin-left: 15px;
+}
+
+th {
+	white-space: nowrap;
+}
+
+.sorting a {
+	float: right;
+}
+
+.sorting i {
+	margin: 0;
+}
+
+/* FOOTER */
+footer {
+	padding: 1rem 0 0.5rem;
+	text-align: center;
+	/*position: absolute;
+	width: 100%;
+	bottom: 0;*/
+}
+
+footer, footer a {
+	color: #6c757d;
+}
+
+footer a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+footer small a {
+	margin-left: .1em;
+}
+
+/* ANIMACIONES */
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  
+  .fast {
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+  }
+  
+  .fadeIn {
+    animation-name: fadeIn;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
