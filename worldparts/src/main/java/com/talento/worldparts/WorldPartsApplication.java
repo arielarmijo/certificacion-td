@@ -8,13 +8,15 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 public class WorldPartsApplication extends SpringBootServletInitializer{
 	
+	private static Class<WorldPartsApplication> applicationClass = WorldPartsApplication.class;
+	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(WorldPartsApplication.class);
+		return application.sources(applicationClass);
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(WorldPartsApplication.class, args);
+		SpringApplication.run(applicationClass, args);
 	}
 
 }

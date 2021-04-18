@@ -58,17 +58,12 @@
 							<c:param name="productCategoryId" value="${productCategoryId}"/>
 							<c:param name="page" value="${currentPage}"/>
 						</c:url>
-						<th>Almacen
-							<span class="sorting">
-								<a href="${sortLink}&sortBy=warehouse.name"><i class="fa fa-sort-asc"></i></a>
-								<a href="${sortLink}&sortBy=warehouse.name"><i class="fa fa-sort-desc"></i></a>
-							</span>
-						</th>
-						<th>ID Producto<a href="${sortLink}&sortBy=product.id"><i class="fa fa-unsorted"></i></a></th>
-						<th>Nombre Producto<a href="${sortLink}&sortBy=product.name"><i class="fa fa-unsorted"></i></a></th>
-						<th>Precio Lista<a href="${sortLink}&sortBy=product.listPrice"><i class="fa fa-unsorted"></i></a></th>
-						<th>Costo estandar<a href="${sortLink}&sortBy=product.standardCost"><i class="fa fa-unsorted"></i></a></th>
-						<th>Inventario<a href="${sortLink}&sortBy=quantity"><i class="fa fa-unsorted"></i></a></th>
+						<th>Almacen<a href="${sortLink}&sortBy=warehouse.name"><i class="fa fa-sort-desc"></i></a></th>
+						<th>ID Producto<a href="${sortLink}&sortBy=product.id"><i class="fa fa-sort-desc"></i></a></th>
+						<th>Nombre Producto<a href="${sortLink}&sortBy=product.name"><i class="fa fa-sort-desc"></i></a></th>
+						<th>Precio Lista<a href="${sortLink}&sortBy=product.listPrice"><i class="fa fa-sort-desc"></i></a></th>
+						<th>Costo estandar<a href="${sortLink}&sortBy=product.standardCost"><i class="fa fa-sort-desc"></i></a></th>
+						<th>Inventario<a href="${sortLink}&sortBy=quantity"><i class="fa fa-sort-desc"></i></a></th>
 						<th>Accion</th>
 					</tr>
 				</thead>
