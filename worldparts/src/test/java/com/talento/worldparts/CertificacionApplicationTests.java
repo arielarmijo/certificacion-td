@@ -1,4 +1,4 @@
-package com.talento.certificacion;
+package com.talento.worldparts;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

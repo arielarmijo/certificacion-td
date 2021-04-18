@@ -1,6 +1,6 @@
 # Certificación Talento Digital
 
-Solución a la [prueba de certificación](casos/World%20Parts/Caso%20WorldParts%20Catalog%20%26%20Inventory.pdf) del bootcamp Desarrollo Aplicaciones Fullstack Java Trainee de Talento Digital.
+Solución a la [prueba de certificación](casos/World%20Parts/Caso%20World%20Parts%20Tech%20Catalog%20%26%20Inventory.pdf) del bootcamp Desarrollo Aplicaciones Fullstack Java Trainee de Talento Digital.
 
 El caso de estudio consiste en realizar un proyecto para la empresa World Parts Tech. Este proyecto busca ordenar el sistema de inventario y catálogo de productos que utilizan los vendedores para la gestión de pedidos y ventas.
 

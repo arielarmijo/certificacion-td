@@ -1,11 +1,8 @@
-package com.talento.certificacion.validador;
+package com.talento.worldparts.validador;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-
-import com.talento.worldparts.validador.ValidadorMargen;
-import com.talento.worldparts.validador.ValidadorMargenSimple;
 
 class ValidadorMargenSimpleTest {
 
