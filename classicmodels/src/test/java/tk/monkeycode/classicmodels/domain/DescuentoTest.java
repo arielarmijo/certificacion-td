@@ -13,19 +13,19 @@ class DescuentoTest {
 
 	@Test
 	void testCalcularTotal() {
-		List<Integer> precios = GeneradorPrecios.generarPreciosCaso();
+		List<Precio> precios = GeneradorPrecios.generarPreciosCaso();
 		assertEquals(30300, dcto.calcularTotal(precios));
 	}
 	
 	@Test
 	void testCalcularTotalListaNula() {
-		List<Integer> precios = null;
+		List<Precio> precios = null;
 		assertEquals(0, dcto.calcularTotal(precios));
 	}
 	
 	@Test
 	void testCalcularTotalListaVacia() {
-		List<Integer> precios = new ArrayList<>();
+		List<Precio> precios = new ArrayList<>();
 		assertEquals(0, dcto.calcularTotal(precios));
 	}
 

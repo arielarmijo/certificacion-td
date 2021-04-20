@@ -6,6 +6,7 @@ import tk.monkeycode.classicmodels.domain.Descuento;
 import tk.monkeycode.classicmodels.domain.DescuentoComplejo;
 import tk.monkeycode.classicmodels.domain.DescuentoSimple;
 import tk.monkeycode.classicmodels.domain.GeneradorPrecios;
+import tk.monkeycode.classicmodels.domain.Precio;
 
 public class DemoConsola {
 	
@@ -20,9 +21,9 @@ public class DemoConsola {
 
 		// Genera y muestra 5 precios aleatorios
 		System.out.println("Tomando 5 precios aleatorios...");
-		List<Integer> precios = GeneradorPrecios.generarPreciosCaso();
+		List<Precio> precios = GeneradorPrecios.generarPreciosCaso();
 //		List<Integer> precios = GeneradorPrecios.generarPreciosAleatorios(5, 1000, 10000);
-		precios.forEach(precio -> System.out.print(String.format("$%,d ", precio)));
+		precios.forEach(precio -> System.out.print(String.format("$%,d ", precio.getPrecio())));
 		System.out.println("\n");
 
 		// Descuentos

@@ -13,7 +13,7 @@ class DescuentoComplejoTest {
 
 	@Test
 	void testCalcularDescuento() {
-		List<Integer> precios = GeneradorPrecios.generarPreciosCaso();
+		List<Precio> precios = GeneradorPrecios.generarPreciosCaso();
 		int dctoEsperado = 3968;
 		int dctoObtenido = dcto.calcularDescuento(precios);
 		assertEquals(dctoEsperado, dctoObtenido);
@@ -21,7 +21,7 @@ class DescuentoComplejoTest {
 	
 	@Test
 	void testCalcularDescuentoListaPreciosVacia() {
-		List<Integer> precios = new ArrayList<>();
+		List<Precio> precios = new ArrayList<>();
 		int dctoEsperado = 0;
 		int dctoObtenido = dcto.calcularDescuento(precios);
 		assertEquals(dctoEsperado, dctoObtenido);
@@ -29,7 +29,7 @@ class DescuentoComplejoTest {
 	
 	@Test
 	void testCalcularDescuentoListaPreciosNulo() {
-		List<Integer> precios = null;
+		List<Precio> precios = null;
 		int dctoEsperado = 0;
 		int dctoObtenido = dcto.calcularDescuento(precios);
 		assertEquals(dctoEsperado, dctoObtenido);

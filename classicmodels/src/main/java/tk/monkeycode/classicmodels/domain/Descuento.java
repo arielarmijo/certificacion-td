@@ -8,12 +8,12 @@ import org.slf4j.LoggerFactory;
 public interface Descuento {
 	
 	Logger logger = LoggerFactory.getLogger(Descuento.class);
-
-	int calcularDescuento(List<Integer> precios);
 	
-	default int calcularTotal(List<Integer> precios) {
+	int calcularDescuento(List<Precio> precios);
+	
+	default int calcularTotal(List<Precio> precios) {
 		try {
-			return precios.stream().mapToInt(precio -> precio.intValue()).sum();
+			return precios.stream().mapToInt(precio -> precio.getPrecio()).sum();
 		} catch (NullPointerException e) {
 			logger.debug("Lista de precios nula");
 			return 0;

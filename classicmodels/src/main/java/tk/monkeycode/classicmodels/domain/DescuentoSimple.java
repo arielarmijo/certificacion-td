@@ -27,7 +27,7 @@ public class DescuentoSimple implements Descuento {
 	 * @return Monto total del descuento a aplicar
 	 */
 	@Override
-	public int calcularDescuento(List<Integer> precios) {
+	public int calcularDescuento(List<Precio> precios) {
 
 		// Problemas de coma flotante
 //		float totalDcto = 0;
@@ -69,7 +69,7 @@ public class DescuentoSimple implements Descuento {
 //							   .reduce(BigDecimal.ZERO, (total, precio) -> total.add(precio)).intValue());
 		
 		try {
-			double totalDcto = precios.stream().mapToDouble(precio -> BigDecimal.valueOf(precio).multiply(dcto).doubleValue())
+			double totalDcto = precios.stream().mapToDouble(precio -> BigDecimal.valueOf(precio.getPrecio()).multiply(dcto).doubleValue())
 											   .peek(precio -> logger.debug("Dcto {}: {}", dcto, precio))
 											   .sum();
 			return (int) Math.round(totalDcto);
@@ -80,9 +80,9 @@ public class DescuentoSimple implements Descuento {
 
 	}
 	
-	public BigDecimal calcularDescuentoExacto(List<Integer> precios) {
+	public BigDecimal calcularDescuentoExacto(List<Precio> precios) {
 		try {
-		return precios.stream().map(precio -> BigDecimal.valueOf(precio).multiply(dcto))
+		return precios.stream().map(precio -> BigDecimal.valueOf(precio.getPrecio()).multiply(dcto))
 							   .peek(precio -> logger.debug("Dcto {}: {}", dcto, precio))
 							   .reduce(BigDecimal.ZERO, (total, precio) -> total.add(precio));
 		} catch (NullPointerException e) {

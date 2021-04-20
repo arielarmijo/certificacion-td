@@ -14,7 +14,7 @@ class DescuentoSimpleTest {
 
 	@Test
 	void testCalcularDescuento() {
-		List<Integer> precios = GeneradorPrecios.generarPreciosCaso();
+		List<Precio> precios = GeneradorPrecios.generarPreciosCaso();
 		int dctoEsperado = 3030;
 		int dctoObtenido = dcto.calcularDescuento(precios);
 		assertEquals(dctoEsperado, dctoObtenido);
@@ -22,7 +22,7 @@ class DescuentoSimpleTest {
 	
 	@Test
 	void testCalcularDescuentoListaPreciosVacia() {
-		List<Integer> precios = new ArrayList<>();
+		List<Precio> precios = new ArrayList<>();
 		int dctoEsperado = 0;
 		int dctoObtenido = dcto.calcularDescuento(precios);
 		assertEquals(dctoEsperado, dctoObtenido);
@@ -30,7 +30,7 @@ class DescuentoSimpleTest {
 	
 	@Test
 	void testCalcularDescuentoListaPreciosNulo() {
-		List<Integer> precios = null;
+		List<Precio> precios = null;
 		int dctoEsperado = 0;
 		int dctoObtenido = dcto.calcularDescuento(precios);
 		assertEquals(dctoEsperado, dctoObtenido);
@@ -38,7 +38,7 @@ class DescuentoSimpleTest {
 
 	@Test
 	void testCalcularDescuentoExacto() {
-		List<Integer> precios = GeneradorPrecios.generarPreciosCaso();
+		List<Precio> precios = GeneradorPrecios.generarPreciosCaso();
 		BigDecimal dctoEsperado = BigDecimal.valueOf(3030.0);
 		BigDecimal dctoObtenido = dcto.calcularDescuentoExacto(precios);
 		assertEquals(dctoEsperado, dctoObtenido);
@@ -46,7 +46,7 @@ class DescuentoSimpleTest {
 	
 	@Test
 	void testCalcularDescuentoExactoListaPreciosVacia() {
-		List<Integer> precios = new ArrayList<>();
+		List<Precio> precios = new ArrayList<>();
 		BigDecimal dctoEsperado = BigDecimal.valueOf(0);
 		BigDecimal dctoObtenido = dcto.calcularDescuentoExacto(precios);
 		assertEquals(dctoEsperado, dctoObtenido);
@@ -54,13 +54,10 @@ class DescuentoSimpleTest {
 	
 	@Test
 	void testCalcularDescuentoExactoListaPreciosNulo() {
-		List<Integer> precios = null;
+		List<Precio> precios = null;
 		BigDecimal dctoEsperado = BigDecimal.valueOf(0);
 		BigDecimal dctoObtenido = dcto.calcularDescuentoExacto(precios);
 		assertEquals(dctoEsperado, dctoObtenido);
 	}
-	
-	
-	// Que pasa con los precios negativos?: Hacer una clase precio que implemente la restriccion.
 
 }
