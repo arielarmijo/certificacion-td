@@ -1,0 +1,9 @@
+<footer class="bg-light">
+    <div><span>${titulo}</span></div>
+	<small>
+		<span>Creado por Ariel Armijo</span>
+		<a href="mailto:arielarmijo@yahoo.es"><i class="fas fa-envelope-open"></i></a>
+		<a href="https://github.com/arielarmijo" target="_blank"><i class="fab fa-github"></i></a>
+		<a href="https://www.linkedin.com/in/arielarmijo" target="_blank"><i class="fab fa-linkedin"></i></a>
+	</small>
+</footer>
