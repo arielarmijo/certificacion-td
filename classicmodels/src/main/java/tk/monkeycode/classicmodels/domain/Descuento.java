@@ -15,7 +15,7 @@ public interface Descuento {
 		try {
 			return precios.stream().mapToInt(precio -> precio.intValue()).sum();
 		} catch (NullPointerException e) {
-			logger.debug("Lista de precios vacia.");
+			logger.debug("Lista de precios nula");
 			return 0;
 		}
 	}

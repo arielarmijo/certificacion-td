@@ -68,17 +68,27 @@ public class DescuentoSimple implements Descuento {
 //							   .peek(precio -> logger.info("{}", precio))
 //							   .reduce(BigDecimal.ZERO, (total, precio) -> total.add(precio)).intValue());
 		
-		double totalDcto = precios.stream().mapToDouble(precio -> BigDecimal.valueOf(precio).multiply(dcto).doubleValue())
-										   .peek(precio -> logger.debug("Dcto {}: {}", dcto, precio))
-										   .sum();
-		return (int) Math.round(totalDcto);
+		try {
+			double totalDcto = precios.stream().mapToDouble(precio -> BigDecimal.valueOf(precio).multiply(dcto).doubleValue())
+											   .peek(precio -> logger.debug("Dcto {}: {}", dcto, precio))
+											   .sum();
+			return (int) Math.round(totalDcto);
+		} catch (NullPointerException e) {
+			logger.info("Lista de precios nula");
+			return 0;
+		}
 
 	}
 	
 	public BigDecimal calcularDescuentoExacto(List<Integer> precios) {
+		try {
 		return precios.stream().map(precio -> BigDecimal.valueOf(precio).multiply(dcto))
-				   .peek(precio -> logger.debug("Dcto {}: {}", dcto, precio))
-				   .reduce(BigDecimal.ZERO, (total, precio) -> total.add(precio));
+							   .peek(precio -> logger.debug("Dcto {}: {}", dcto, precio))
+							   .reduce(BigDecimal.ZERO, (total, precio) -> total.add(precio));
+		} catch (NullPointerException e) {
+			logger.info("Lista de precios nula");
+			return BigDecimal.ZERO;
+		}
 	}
 
 }

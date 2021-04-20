@@ -30,11 +30,16 @@ public class DescuentoComplejo implements Descuento {
 	@Override
 	public int calcularDescuento(List<Integer> precios) {
 		
+		if (precios == null) {
+			logger.info("Lista de precios nula");
+			return 0;
+		}
+		
 		// Calcula total de la lista de precios
 		int precioTotal = calcularTotal(precios);
 		logger.debug("Precio total: {}", precioTotal);
 		
-		// Separa los tipos de precios	
+		// Separa los tipos de precios
 		Map<CategoriaPrecio, List<Integer>> preciosClasificados = precios.stream().collect(Collectors.groupingBy(precio -> clasificarPrecio(precio)));
 		logger.debug("Clasificacion de precios: {}", preciosClasificados);
 		
