@@ -18,7 +18,6 @@ public class DescuentoSimple implements Descuento {
 	}
 	
 	public DescuentoSimple(double dcto) {
-		logger.debug("Aplicando un {}% de descuento.", dcto*100);
 		this.dcto = BigDecimal.valueOf(dcto);
 	}
 	

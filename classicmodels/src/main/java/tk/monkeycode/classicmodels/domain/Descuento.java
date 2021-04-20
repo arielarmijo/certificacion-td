@@ -21,10 +21,4 @@ public interface Descuento {
 		}
 	}
 	
-	default int calcularTotal(Stream<Integer> precios) {
-		return precios.mapToInt(precio -> precio.intValue())
-					  .peek(precio -> logger.debug("{}", precio))
-					  .sum();
-	}
-	
 }

@@ -36,6 +36,7 @@ public class DescuentoComplejo implements Descuento {
 		
 		// Separa los tipos de precios	
 		Map<CategoriaPrecio, List<Integer>> preciosClasificados = precios.stream().collect(Collectors.groupingBy(precio -> clasificarPrecio(precio)));
+		logger.debug("Clasificacion de precios: {}", preciosClasificados);
 		
 		// Calcula descuentos
 		BigDecimal dctoPreciosBajos = dcto5.calcularDescuentoExacto(preciosClasificados.get(CategoriaPrecio.BAJO));
