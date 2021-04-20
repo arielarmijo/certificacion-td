@@ -2,7 +2,6 @@ package tk.monkeycode.classicmodels.domain;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,12 +79,6 @@ public class DescuentoSimple implements Descuento {
 		return precios.stream().map(precio -> BigDecimal.valueOf(precio).multiply(dcto))
 				   .peek(precio -> logger.debug("Dcto {}: {}", dcto, precio))
 				   .reduce(BigDecimal.ZERO, (total, precio) -> total.add(precio));
-	}
-	
-	public BigDecimal calcularDescuento(Stream<Integer> precios) {
-		return precios.map(precio -> BigDecimal.valueOf(precio).multiply(dcto))
-					  .peek(precio -> logger.debug("Dcto {}: {}", dcto, precio))
-				   	  .reduce(BigDecimal.ZERO, (total, precio) -> total.add(precio));
 	}
 
 }
