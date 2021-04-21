@@ -14,7 +14,7 @@ La prueba consiste en desarrollar los siguientes requerimientos:
 5. Crear API REST que ofrezca la información mostrada en la página web del punto anterior.
 
 ## Caso Classic Models
-Solución al caso [Classic Models](casos/Classic%20Models/Classic%20Models%20Inventory%20%26%20Orders.pdf). El proyecto desplegado puede revisarse en [monkeycode.tk/worldparts](http://152.67.40.135:8080/classicmodels).
+Solución al caso [Classic Models](casos/Classic%20Models/Classic%20Models%20Inventory%20%26%20Orders.pdf). El proyecto desplegado puede revisarse en [monkeycode.tk/classicmodels](http://152.67.40.135:8080/classicmodels).
 
 El caso de estudio consiste en realizar un proyecto para la empresa Classsic Models. Este proyecto busca ordenar el sistema de inventario y de órdenes que se cursan en las distintas oficinas.
 

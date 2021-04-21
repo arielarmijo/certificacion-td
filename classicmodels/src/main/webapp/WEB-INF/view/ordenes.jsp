@@ -7,17 +7,17 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/bootstrap.css" >
-	<link rel="stylesheet" href="/css/fontawesome.css"/>
-	<link rel="stylesheet" href="/css/main.css"/>
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="./css/bootstrap.css" >
+	<link rel="stylesheet" href="./css/fontawesome.css"/>
+	<link rel="stylesheet" href="./css/main.css"/>
 	<title>${titulo}</title>
 </head>
 <body>
 
 	<nav class="navbar navbar-light bg-light">
 	  <div class="container-fluid">
-	    <a href="/" class="navbar-brand h1">${titulo}</a>
+	    <a href="./" class="navbar-brand h1">${titulo}</a>
 	  </div>
 	</nav>
 
