@@ -22,7 +22,9 @@
 	</nav>
 
 	<main class="container-fluid">
+	
 		<h1 class="text-center">Monitor de órdenes</h1>
+		
 		<form class="row justify-content-center my-3">
 			<div class="col-sm-6 col-md-3 col-lg-auto">
 				<label for="estado" class="text-muted">Estado</label>
@@ -44,43 +46,72 @@
 			</div>
 			<div class="col-sm-6 col-md-3 col-lg-auto">
 				<label for="desde" class="text-muted">Fecha Orden Desde</label>
-				<input type="date" id="desde" class="form-control form-control-sm">
+				<input id="desde" type="date" class="form-control form-control-sm" name="desde" value="${desde}">
 			</div>
 			<div class="col-sm-6 col-md-3 col-lg-auto">
 				<label for="hasta" class="text-muted">Fecha Orden Hasta</label>
-				<input type="date" id="hasta" class="form-control form-control-sm">
+				<input id="hasta" type="date" class="form-control form-control-sm" name="hasta" value="${hasta}">
 			</div>
 			<div class="col-sm-1 col-md-12 col-lg-auto d-flex justify-content-center align-items-end">
-				<input type="submit" class="btn btn-primary" value="Buscar">
+				<input type="submit" class="btn btn-sm btn-primary me-2" value="Buscar">
+				<input id="reset" type="button" class="btn btn-sm btn-warning" value="Limpiar">
 			</div>
 		</form>
+		
 		<div class="animated fadeIn">
-			<table class="table table-striped table-hover table-responsive">
-				<thead>
-					<tr>
-						<th>Número de Orden</th>
-						<th>Fecha Orden</th>
-						<th>Fecha Requerida</th>
-						<th>Estado</th>
-						<th>Acción</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="order" items="${ordenes}">
+		
+			<c:if test="${empty ordenes}">
+				<div class="container">
+					<p class="alert alert-danger">No se encontraron órdenes</p>
+				</div>
+			</c:if>
+			
+			<c:if test="${not empty ordenes}">
+				<table class="table table-striped table-hover table-responsive">
+					<thead>
 						<tr>
-							<td>${order.orderNumber}</td>
-							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${order.orderDate}"/></td>
-							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${order.requiredDate}"/></td>
-							<td>${order.status}</td>
-							<td>
-								<a href="#" class="btn btn-sm btn-primary">Ver</a>
-							</td>
+							<th>Número de Orden</th>
+							<th>Fecha Orden</th>
+							<th>Fecha Requerida</th>
+							<th>Estado</th>
+							<th>Acción</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<c:forEach var="order" items="${ordenes}">
+							<tr>
+								<td>${order.orderNumber}</td>
+								<td><fmt:formatDate pattern="dd-MM-yyyy" value="${order.orderDate}"/></td>
+								<td><fmt:formatDate pattern="dd-MM-yyyy" value="${order.requiredDate}"/></td>
+								<td>${order.status}</td>
+								<td>
+									<a href="#" class="btn btn-sm btn-primary">Ver</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
+			
 		</div>
+		
 	</main>
+	
 	<%@ include file="/WEB-INF/snippets/footer.jsp" %>
+	
+	<script type="text/javascript">
+		var reset = document.getElementById('reset');
+		reset.addEventListener('click',  () => {
+			var estado = document.getElementById('estado');
+			var cliente = document.getElementById('cliente');
+			var desde = document.getElementById('desde');
+			var hasta = document.getElementById('hasta');
+			estado.selectedIndex = '0';
+			cliente.selectedIndex = '0';
+			desde.value = '';
+			hasta.value = '';
+			});
+	</script>
+	
 </body>
 </html>
