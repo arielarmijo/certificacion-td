@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,29 +17,29 @@
 
 	<nav class="navbar navbar-light bg-light">
 	  <div class="container-fluid">
-	    <span class="navbar-brand h1">${titulo}</span>
+	    <a href="/" class="navbar-brand h1">${titulo}</a>
 	  </div>
 	</nav>
 
 	<main class="container-fluid">
 		<h1 class="text-center">Monitor de órdenes</h1>
-		<div class="row justify-content-center my-3">
+		<form class="row justify-content-center my-3">
 			<div class="col-sm-6 col-md-3 col-lg-auto">
 				<label for="estado" class="text-muted">Estado</label>
-				<select id="estado" class="form-select form-select-sm"">
-					  <option selected>Seleccione Estado</option>
-					  <option value="1">One</option>
-					  <option value="2">Two</option>
-					  <option value="3">Three</option>
+				<select id="estado" class="form-select form-select-sm" name="orderStatus">
+					  <option value="%">Seleccione Estado</option>
+					  <c:forEach var="estado" items="${estados}">
+					  	<option value="${estado}" ${orderStatus == estado ? 'selected' : ''}>${estado}</option>
+					  </c:forEach>
 				</select>
 			</div>
 			<div class="col-sm-6 col-md-3 col-lg-auto">
 				<label for="cliente" class="text-muted">Cliente</label>
-				<select id="cliente" class="form-select form-select-sm">
-					  <option selected>Seleccione Cliente</option>
-					  <option value="1">One</option>
-					  <option value="2">Two</option>
-					  <option value="3">Three</option>
+				<select id="cliente" class="form-select form-select-sm" name="customerNumber">
+					  <option value="-1">Seleccione Cliente</option>
+					  <c:forEach var="cliente" items="${clientes}">
+					  	<option value="${cliente.customerNumber}" ${customerNumber == cliente.customerNumber ? 'selected' : ''}>${cliente.customerName}</option>
+					  </c:forEach>
 				</select>
 			</div>
 			<div class="col-sm-6 col-md-3 col-lg-auto">
@@ -48,9 +51,9 @@
 				<input type="date" id="hasta" class="form-control form-control-sm">
 			</div>
 			<div class="col-sm-1 col-md-12 col-lg-auto d-flex justify-content-center align-items-end">
-				<input type="button" class="btn btn-primary" value="Buscar">
+				<input type="submit" class="btn btn-primary" value="Buscar">
 			</div>
-		</div>
+		</form>
 		<div class="animated fadeIn">
 			<table class="table table-striped table-hover table-responsive">
 				<thead>
@@ -63,15 +66,17 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>
-							<a href="#" class="btn btn-sm btn-primary">Ver</a>
-						</td>
-					</tr>
+					<c:forEach var="order" items="${ordenes}">
+						<tr>
+							<td>${order.orderNumber}</td>
+							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${order.orderDate}"/></td>
+							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${order.requiredDate}"/></td>
+							<td>${order.status}</td>
+							<td>
+								<a href="#" class="btn btn-sm btn-primary">Ver</a>
+							</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
