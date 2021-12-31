@@ -9,11 +9,6 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ClassicmodelsApplication extends SpringBootServletInitializer {
-	
-//	@PostConstruct
-//    void started() {
-//      TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-//    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(ClassicmodelsApplication.class, args);
@@ -29,5 +24,4 @@ public class ClassicmodelsApplication extends SpringBootServletInitializer {
 		return args -> DemoConsola.main(args);
 	}
 
-	
 }
