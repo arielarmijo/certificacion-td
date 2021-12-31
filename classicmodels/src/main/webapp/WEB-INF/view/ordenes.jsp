@@ -16,12 +16,12 @@
 <body>
 
 	<nav class="navbar navbar-light bg-light">
-	  <div class="container-fluid">
+	  <div class="container">
 	    <a href="./" class="navbar-brand h1">${titulo}</a>
 	  </div>
 	</nav>
 
-	<main class="container-fluid">
+	<main class="container">
 	
 		<h1 class="text-center">Monitor de órdenes</h1>
 		
