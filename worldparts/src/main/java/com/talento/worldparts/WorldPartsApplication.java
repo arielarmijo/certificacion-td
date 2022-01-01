@@ -5,19 +5,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-
 @SpringBootApplication
 public class WorldPartsApplication extends SpringBootServletInitializer{
 	
-	private static Class<WorldPartsApplication> applicationClass = WorldPartsApplication.class;
+	// Used when run as JAR
+	public static void main(String[] args) {
+		SpringApplication.run(WorldPartsApplication.class, args);
+	}
 	
+	// Used when run as WAR
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(applicationClass);
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(applicationClass, args);
+		return application.sources(WorldPartsApplication.class);
 	}
 
 }
